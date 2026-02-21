@@ -14,6 +14,7 @@
 - [Code Example](#-code-example)
 - [কখন কোনটা বেছে নেবো?](#-কখন-কোনটা-বেছে-নেবো)
 - [Real-time Project-এ Drizzle কেন?](#-real-time-project-এ-drizzle-কেন)
+- [🧪 Terminal-এ WebSocket Test করো (wscat)](#-terminal-এ-websocket-test-করো-wscat)
 
 ---
 
@@ -21,31 +22,31 @@
 
 ### ✅ Key Features
 
-| Feature | বিবরণ |
-|---|---|
-| **TypeScript First** | পুরোপুরি TS মাথায় রেখে বানানো। কলাম auto-suggestion পাবেন। |
-| **Zero Overhead** | Prisma-র মতো ভারী নয়। Runtime-এ অনেক কম memory নেয়। |
-| **Edge Ready** | Cloudflare Workers, Vercel Edge-এ দারুণ কাজ করে। |
-| **No Code Generation** | Prisma-র মতো আলাদা করে ফাইল generate করতে হয় না। |
-| **SQL-like Feel** | SQL জানলে Drizzle লেখা অনেক স্বাভাবিক মনে হবে। |
-| **Drizzle Studio** | Browser-এ directly ডেটাবেসের ডেটা table আকারে দেখা যায়। |
+| Feature                | বিবরণ                                                       |
+| ---------------------- | ----------------------------------------------------------- |
+| **TypeScript First**   | পুরোপুরি TS মাথায় রেখে বানানো। কলাম auto-suggestion পাবেন। |
+| **Zero Overhead**      | Prisma-র মতো ভারী নয়। Runtime-এ অনেক কম memory নেয়।       |
+| **Edge Ready**         | Cloudflare Workers, Vercel Edge-এ দারুণ কাজ করে।            |
+| **No Code Generation** | Prisma-র মতো আলাদা করে ফাইল generate করতে হয় না।           |
+| **SQL-like Feel**      | SQL জানলে Drizzle লেখা অনেক স্বাভাবিক মনে হবে।              |
+| **Drizzle Studio**     | Browser-এ directly ডেটাবেসের ডেটা table আকারে দেখা যায়।    |
 
 ---
 
 ## 📊 Drizzle vs Prisma — মূল পার্থক্য
 
-| বৈশিষ্ট্য | Prisma | Drizzle ORM |
-|---|---|---|
-| **Model File** | `schema.prisma` (আলাদা ফাইল) | `schema.ts` (pure TypeScript) |
-| **Query Engine** | Rust-based Binary Engine | Pure JS/TS (কোনো engine নেই) |
-| **পারফরম্যান্স** | কিছুটা ভারী | অত্যন্ত দ্রুত |
-| **Type Safety** | Generated code-এর উপর নির্ভর | Native TypeScript inference |
-| **SQL Feel** | নিজস্ব DSL (Prisma Query Language) | SQL-এর মতো |
-| **Bundle Size** | বড় | অনেক ছোট |
-| **Serverless Support** | Cold start সমস্যা আছে | চমৎকার (সুপার ফাস্ট) |
-| **Auto Reconnect** | ✅ আছে | ✅ আছে |
-| **Community** | বড় ও পুরনো | ছোট কিন্তু দ্রুত বাড়ছে |
-| **Migration System** | খুব smooth | ভালো, তবে Prisma-র মতো নয় |
+| বৈশিষ্ট্য              | Prisma                             | Drizzle ORM                   |
+| ---------------------- | ---------------------------------- | ----------------------------- |
+| **Model File**         | `schema.prisma` (আলাদা ফাইল)       | `schema.ts` (pure TypeScript) |
+| **Query Engine**       | Rust-based Binary Engine           | Pure JS/TS (কোনো engine নেই)  |
+| **পারফরম্যান্স**       | কিছুটা ভারী                        | অত্যন্ত দ্রুত                 |
+| **Type Safety**        | Generated code-এর উপর নির্ভর       | Native TypeScript inference   |
+| **SQL Feel**           | নিজস্ব DSL (Prisma Query Language) | SQL-এর মতো                    |
+| **Bundle Size**        | বড়                                | অনেক ছোট                      |
+| **Serverless Support** | Cold start সমস্যা আছে              | চমৎকার (সুপার ফাস্ট)          |
+| **Auto Reconnect**     | ✅ আছে                             | ✅ আছে                        |
+| **Community**          | বড় ও পুরনো                        | ছোট কিন্তু দ্রুত বাড়ছে       |
+| **Migration System**   | খুব smooth                         | ভালো, তবে Prisma-র মতো নয়    |
 
 ---
 
@@ -109,12 +110,12 @@ Vercel বা AWS Lambda-তে host করলে Prisma-র বড় engine �
 
 ### সংক্ষেপে — Real-time Project-এ Prisma-র প্রভাব
 
-| চ্যালেঞ্জ | Prisma-তে কেমন হবে? | আপনার App-এ প্রভাব |
-|---|---|---|
-| **আপডেট স্পিড** | কিছুটা ধীর (engine-এর কারণে) | স্কোর/মেসেজ আপডেটে সামান্য lag |
-| **সার্ভার লোড** | বেশি (resource hungry) | বেশি ইউজার আসলে server slow |
-| **ডেভেলপমেন্ট** | খুব সহজ (auto-completion) | কোড লিখতে আরাম পাবেন |
-| **ডিপ্লয়মেন্ট** | ভারী bundle size | Hosting খরচ বাড়তে পারে |
+| চ্যালেঞ্জ        | Prisma-তে কেমন হবে?          | আপনার App-এ প্রভাব             |
+| ---------------- | ---------------------------- | ------------------------------ |
+| **আপডেট স্পিড**  | কিছুটা ধীর (engine-এর কারণে) | স্কোর/মেসেজ আপডেটে সামান্য lag |
+| **সার্ভার লোড**  | বেশি (resource hungry)       | বেশি ইউজার আসলে server slow    |
+| **ডেভেলপমেন্ট**  | খুব সহজ (auto-completion)    | কোড লিখতে আরাম পাবেন           |
+| **ডিপ্লয়মেন্ট** | ভারী bundle size             | Hosting খরচ বাড়তে পারে        |
 
 ---
 
@@ -164,20 +165,27 @@ model Message {
 **Drizzle (schema.ts)**
 
 ```ts
-import { pgTable, serial, text, varchar, timestamp, integer } from "drizzle-orm/pg-core";
-import { relations } from "drizzle-orm";
+import {
+  pgTable,
+  serial,
+  text,
+  varchar,
+  timestamp,
+  integer,
+} from 'drizzle-orm/pg-core';
+import { relations } from 'drizzle-orm';
 
-export const users = pgTable("users", {
-  id: serial("id").primaryKey(),
-  fullName: text("full_name"),
-  phone: varchar("phone", { length: 256 }),
+export const users = pgTable('users', {
+  id: serial('id').primaryKey(),
+  fullName: text('full_name'),
+  phone: varchar('phone', { length: 256 }),
 });
 
-export const messages = pgTable("messages", {
-  id: serial("id").primaryKey(),
-  content: text("content").notNull(),
-  createdAt: timestamp("created_at").defaultNow(),
-  userId: integer("user_id").references(() => users.id),
+export const messages = pgTable('messages', {
+  id: serial('id').primaryKey(),
+  content: text('content').notNull(),
+  createdAt: timestamp('created_at').defaultNow(),
+  userId: integer('user_id').references(() => users.id),
 });
 
 // Relations define করা
@@ -191,6 +199,7 @@ export const usersRelations = relations(users, ({ many }) => ({
 ### ডেটা Read করা
 
 **Prisma**
+
 ```ts
 // সহজ কিন্তু performance overhead আছে
 const allUsers = await prisma.user.findMany({
@@ -199,6 +208,7 @@ const allUsers = await prisma.user.findMany({
 ```
 
 **Drizzle**
+
 ```ts
 // SQL-এর মতো, কিন্তু type-safe
 const allUsers = await db.select().from(users);
@@ -219,7 +229,7 @@ const usersWithMessages = await db
 const newMessage = await db
   .insert(messages)
   .values({
-    content: "Hello from WebSocket!",
+    content: 'Hello from WebSocket!',
     userId: 1,
   })
   .returning();
@@ -285,13 +295,14 @@ npx drizzle-kit studio
 ```
 
 **`drizzle.config.ts`**
+
 ```ts
-import { defineConfig } from "drizzle-kit";
+import { defineConfig } from 'drizzle-kit';
 
 export default defineConfig({
-  schema: "./src/schema.ts",
-  out: "./drizzle",
-  dialect: "postgresql",
+  schema: './src/schema.ts',
+  out: './drizzle',
+  dialect: 'postgresql',
   dbCredentials: {
     url: process.env.DATABASE_URL!,
   },
@@ -299,6 +310,7 @@ export default defineConfig({
 ```
 
 **Migration চালানো**
+
 ```bash
 # Migration file তৈরি
 npx drizzle-kit generate
@@ -319,15 +331,60 @@ npx drizzle-kit migrate
 
 ## 📌 Quick Summary
 
-| যদি তুমি চাও... | বেছে নাও |
-|---|---|
-| দ্রুত prototype | 🟣 Prisma |
-| Maximum performance | 🟡 Drizzle |
-| Serverless / Edge deploy | 🟡 Drizzle |
-| বড় community ও সাহায্য | 🟣 Prisma |
+| যদি তুমি চাও...                | বেছে নাও   |
+| ------------------------------ | ---------- |
+| দ্রুত prototype                | 🟣 Prisma  |
+| Maximum performance            | 🟡 Drizzle |
+| Serverless / Edge deploy       | 🟡 Drizzle |
+| বড় community ও সাহায্য        | 🟣 Prisma  |
 | Real-time app (Chat/Dashboard) | 🟡 Drizzle |
-| SQL-এর full control | 🟡 Drizzle |
+| SQL-এর full control            | 🟡 Drizzle |
 
 ---
 
-*Made with ❤️ | Happy Coding!*
+## 🧪 Terminal-এ WebSocket Test করো (wscat)
+
+> **wscat** হলো একটি command-line tool যা দিয়ে সরাসরি terminal থেকে WebSocket server-এ connect করে message পাঠানো ও receive করা যায়।  
+> Postman যেমন HTTP API test করে, wscat তেমনি WebSocket connection test করে।
+
+---
+
+### 📦 Installation
+
+```bash
+# Global install (recommended)
+npm install -g wscat
+
+# Install হয়েছে কিনা check করো
+wscat --version
+```
+
+---
+
+### 🔌 Basic Connection
+
+```bash
+# সাধারণ WebSocket server-এ connect
+wscat -c ws://localhost:8000/ws
+
+# Secure WebSocket (wss)
+wscat -c wss://yourdomain.com/ws
+
+# Custom port
+wscat -c ws://localhost:3000
+```
+
+> Connect হলে terminal-এ এরকম দেখাবে:
+
+```
+Connected (press CTRL+C to quit)
+>
+```
+
+---
+
+> 💡 **Tip:** wscat দিয়ে test করা মানে — আপনার WebSocket server সঠিকভাবে কাজ করছে কিনা frontend ছাড়াই নিশ্চিত করা যায়।
+
+---
+
+_Made with ❤️ | Happy Coding!_
